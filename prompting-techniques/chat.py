@@ -5,7 +5,7 @@ load_dotenv()
 
 client = OpenAI()
 
-# zero-shot prompting
+# zero shot prompting
 response = client.chat.completions.create(
     temperature=1.1,
     max_tokens=50,

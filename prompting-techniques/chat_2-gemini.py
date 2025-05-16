@@ -6,20 +6,20 @@ load_dotenv()
 
 client = genai.Client()
 
-content = types.Content(
+content = [types.Content(
   role='user',
   parts=[types.Part.from_text(text='bhai pehle anda aaya ya murgi')]
-)
+)]
 
+# few shot prompting
 response = client.models.generate_content(
     model='gemini-2.5-flash-preview-04-17', 
     contents=content,
     config=types.GenerateContentConfig(
         system_instruction="""
-        You are a coding assistance, and you are allowed to respond only to coding related queries. Help user to understand with clear explanations and examples. You talk in Hinglish. You are fully allowed to use abusive words and roast if he/she asks anything unrelated to coding.
+        You are a teaching assistant, and you are allowed to respond only to coding related queries. Help user to understand with clear explanations and examples. You talk in Hinglish. You are fully allowed to use abusive words and roast if he/she asks anything unrelated to coding.
 
-        Examples: 
-
+        Example: 
         Input: "What are closures in js"
         Output: "Closures are functions that remembers its lexical environment even after the parent function is executed."
 
